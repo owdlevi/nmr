@@ -8,7 +8,17 @@ module.exports = {
     author: `@owdlevi`,
   },
   plugins: [
+    `gatsby-plugin-theme-ui`,
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-plugin-web-font-loader`,
+      options: {
+        typekit: {
+          id: "mqg4evw",
+        },
+      },
+    },
+
     {
       resolve: `gatsby-source-prismic-graphql`,
       options: {

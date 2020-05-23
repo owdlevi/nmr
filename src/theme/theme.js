@@ -1,13 +1,12 @@
 export default {
-  breakpoints: ["40em", "52em", "64em"],
+  breakpoints: ["40em", "52em", "64em", "87.5em", "106.25"],
   space: [0, 4, 8, 16, 24, 32, 64, 128, 256, 512],
   fonts: {
-    body:
-      'Nunito,system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
+    body: '"itc-avant-garde-gothic-pro",sans-serif',
     heading: "inherit",
     monospace: "Menlo, monospace",
   },
-  fontSizes: [12, 14, 16, 20, 24, 36, 48, 64, 96],
+  fontSizes: [12, 14, 16, 20, 24, 36, 48, 64, 72],
   fontWeights: {
     body: 400,
     heading: 700,
@@ -24,15 +23,14 @@ export default {
     container: {
       maxWidth: "1700px",
       mx: "auto",
-      p: 4,
     },
   },
   colors: {
-    text: "#0F0F0F",
+    text: "#000000",
     background: "#fff",
     headerbg: "#fff",
-    title: "#f4f7fc",
-    primary: "#fafafa",
+    title: "#000000",
+    primary: "#B3B3B3",
     accent: "#2526E5",
     accentColor: "#fff",
     modes: {
@@ -60,32 +58,49 @@ export default {
     },
     header: {
       width: "100%",
-
       height: "64px",
       backgroundColor: "headerbg",
       display: "flex",
       alignItems: "center",
       justifyContent: "space-between",
       px: 4,
-
-      top: 0,
-      zIndex: 100,
+      my: "80px",
     },
     footer: {
       display: "flex",
       flexWrap: "wrap",
       alignItems: "center",
-      p: 4,
-      borderTop: "1px solid #dadce0",
-      backgroundColor: "headerbg",
+      justifyContent: "space-between",
+      px: 4,
+      py: [4, 5, 7],
+      backgroundColor: "accent",
     },
     main: {
       mt: 6,
     },
     navlink: {
-      color: "text",
+      color: "accent",
       textDecoration: "none",
       display: "inline-block",
+      textTransform: "uppercase",
+      fontWeight: "700",
+      fontSize: "21px",
+      ml: [6, 7],
+      py: 2,
+    },
+    navlinkcta: {
+      color: "accent",
+      textDecoration: "none",
+      display: "inline-block",
+      textTransform: "uppercase",
+      fontWeight: "700",
+      fontSize: "21px",
+      ml: [5, 5, 6],
+      py: 2,
+      px: [4, 5, 6],
+      border: "2px solid",
+      colorColor: "accent",
+      borderRadius: "25px",
     },
     button: {
       color: "text",
@@ -129,10 +144,15 @@ export default {
     },
     h1: {
       variant: "text.heading",
-      fontSize: 5,
+      fontSize: [4, 4, 5, 6, 7],
       mt: 5,
       mb: 3,
-      fontWeight: "500",
+      fontWeight: "700",
+    },
+    subtitleh2: {
+      variant: "text.heading",
+      color: "primary",
+      fontSize: 4,
     },
     h2: {
       variant: "text.heading",

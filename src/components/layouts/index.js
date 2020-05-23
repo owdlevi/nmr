@@ -6,22 +6,6 @@ import Footer from "./Footer"
 import Header from "./Header"
 import theme from "../../theme/theme"
 
-// export default (props) => (
-//   <StaticQuery
-//     query={graphql`
-//       query SiteQuery {
-//         site {
-//           siteMetadata {
-//             title
-//             description
-//           }
-//         }
-//       }
-//     `}
-//     render={(data) => <Layout data={data} {...props} />}
-//   />
-// )
-
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
     query SiteQuery {

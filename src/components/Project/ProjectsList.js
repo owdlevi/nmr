@@ -2,7 +2,7 @@
 import { Container, jsx } from "theme-ui"
 import { Link } from "gatsby"
 import { RichText, Date } from "prismic-reactjs"
-import { linkResolver } from "../utils/linkResolver"
+import { linkResolver } from "../../utils/linkResolver"
 
 // Function to retrieve a small preview of the post's text
 const firstParagraph = (project) => {

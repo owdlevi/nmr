@@ -1,97 +1,102 @@
 /** @jsx jsx */
 import { jsx, Container } from "theme-ui"
 import { Link } from "gatsby"
+import Sticky from "react-stickynode"
 
 const Header = (props) => {
   return (
-    <header
+    <Sticky
+      enabled={false}
+      top={0}
+      innerZ={9999}
+      activeClass="nav-sticky"
       sx={{
-        variant: "styles.header",
+        backgroundColor: "background",
       }}
     >
-      <Container
+      <header
         sx={{
-          display: "flex",
-          alignItems: "center",
+          variant: "styles.header",
         }}
       >
-        <div
+        <Container
           sx={{
-            width: ["100%", "40%", "30%"],
-            order: 1,
-            textAlign: "left",
+            display: "flex",
+            alignItems: "center",
           }}
         >
-          <Link
-            to="/"
+          <div
             sx={{
-              height: "40px",
+              width: ["100%", "40%", "30%"],
+              order: 1,
+              textAlign: "left",
             }}
           >
-            <img
+            <Link
+              to="/"
               sx={{
-                height: "40px",
-              }}
-              alt="UI Logo"
-              src="/logo.svg"
-            />
-            <span
-              sx={{
-                position: "absolute",
-                width: 1,
-                height: 1,
-                overflow: "hidden",
-                top: -9999,
+                width: "180px",
               }}
             >
-              Home
-            </span>
-          </Link>
-        </div>
-        <div
-          sx={{
-            width: ["60", "70%"],
-            display: ["none", "flex", "flex"],
-            order: 3,
-            justifyContent: "flex-end",
-            alignItems: "center",
-            textAlign: "right",
-            verticalAlign: "center",
-          }}
-        >
-          <Link
-            to="/about-us"
+              <img
+                sx={{
+                  width: "180px",
+                }}
+                alt="UI Logo"
+                src="/logo.svg"
+              />
+              <span
+                sx={{
+                  position: "absolute",
+                  width: 1,
+                  height: 1,
+                  overflow: "hidden",
+                  top: -9999,
+                }}
+              >
+                Home
+              </span>
+            </Link>
+          </div>
+          <div
             sx={{
-              variant: "styles.navlink",
-              ml: [3, 4],
-              py: 2,
+              width: ["60", "70%"],
+              display: ["none", "flex", "flex"],
+              order: 3,
+              justifyContent: "flex-end",
+              alignItems: "center",
+              textAlign: "right",
+              verticalAlign: "center",
             }}
           >
-            About
-          </Link>
-          <Link
-            to="/blog"
-            sx={{
-              variant: "styles.navlink",
-              ml: [3, 4],
-              py: 2,
-            }}
-          >
-            Blog
-          </Link>
-          <Link
-            to="/contact"
-            sx={{
-              variant: "styles.navlink",
-              ml: [3, 4],
-              py: 2,
-            }}
-          >
-            Contact
-          </Link>
-        </div>
-      </Container>
-    </header>
+            <Link
+              to="/our-work"
+              sx={{
+                variant: "styles.navlink",
+              }}
+            >
+              OUR WORK
+            </Link>
+            <Link
+              to="/meet-the-nerds"
+              sx={{
+                variant: "styles.navlink",
+              }}
+            >
+              MEET THE NERDS
+            </Link>
+            <Link
+              to="/say-hello"
+              sx={{
+                variant: "styles.navlinkcta",
+              }}
+            >
+              SAY HELLO
+            </Link>
+          </div>
+        </Container>
+      </header>
+    </Sticky>
   )
 }
 
