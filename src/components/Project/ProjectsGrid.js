@@ -1,10 +1,11 @@
-import { render } from "react-dom"
+/** @jsx jsx */
 import React, { useState, useEffect } from "react"
+import { jsx } from "theme-ui"
 import { useTransition, a } from "react-spring"
-import shuffle from "lodash/shuffle"
 import useMeasure from "../../utils/hooks/useMeasure"
 import useMedia from "../../utils/hooks/useMedia"
-import data from "./data"
+import { Link } from "gatsby"
+import { linkResolver } from "../../utils/linkResolver"
 import "./style.css"
 
 const ProjectsGrid = ({ projects }) => {
@@ -74,9 +75,19 @@ const ProjectsGrid = ({ projects }) => {
           {/* <div>
             <img src={item.url} alt="" />
           </div> */}
-          <div
+          <Link
+            sx={{
+              display: "inline-block",
+              position: "relative",
+              backgroundSize: "cover",
+              backgroundPosition: "center center",
+              width: "100%",
+              height: "100%",
+              overflow: "hidden",
+            }}
+            to={linkResolver(item.node._meta)}
             style={{ backgroundImage: `url(${item.node.listing_image.url})` }}
-          />
+          ></Link>
         </a.div>
       ))}
     </div>

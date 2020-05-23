@@ -64,7 +64,7 @@ export default {
       alignItems: "center",
       justifyContent: "space-between",
       px: 4,
-      my: "80px",
+      my: "40px",
     },
     footer: {
       display: "flex",

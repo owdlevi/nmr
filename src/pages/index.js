@@ -116,31 +116,80 @@ export default ({ data }) => {
           p: "15px",
         }}
       >
-        <div>
-          <span>FILTER BY:</span>
-          <span
-            onClick={(e) => updateFilter("all")}
+        {/* Arrow down and filters */}
+        <div
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "baseline",
+            px: 4,
+          }}
+        >
+          <svg
             sx={{
-              mx: 2,
-              color: "accent",
+              display: "inline-block",
+              width: "24px",
             }}
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24.15 152.91"
           >
-            All
-          </span>
-          {categorys.map((category) => {
-            return (
-              <span
-                key={category.node._meta.uid}
-                onClick={(e) => updateFilter(category.node._meta.uid)}
-                sx={{
-                  mx: 2,
-                  color: "accent",
-                }}
-              >
-                {category.node.category_name[0].text}
-              </span>
-            )
-          })}
+            <g id="Layer_2" data-name="Layer 2">
+              <g id="Layer_1-2" data-name="Layer 1">
+                <line
+                  x1="10.39"
+                  y1="92.41"
+                  x2="10.39"
+                  y2="152.41"
+                  fill="none"
+                  stroke="#e6ebee"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <polyline
+                  points="14.39 148.41 10.39 152.41 6.39 148.41"
+                  fill="none"
+                  stroke="#e6ebee"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <text
+                  transform="rotate(-90 49.905 31.635)"
+                  font-size="21"
+                  fill="#e6ebee"
+                  font-family="ITCAvantGardePro-Bold, ITC Avant Garde Gothic Pro"
+                  font-weight="700"
+                >
+                  SCROLL
+                </text>
+              </g>
+            </g>
+          </svg>
+          <div>
+            <span>FILTER BY:</span>
+            <span
+              onClick={(e) => updateFilter("all")}
+              sx={{
+                mx: 2,
+                color: "accent",
+              }}
+            >
+              All
+            </span>
+            {categorys.map((category) => {
+              return (
+                <span
+                  key={category.node._meta.uid}
+                  onClick={(e) => updateFilter(category.node._meta.uid)}
+                  sx={{
+                    mx: 2,
+                    color: "accent",
+                  }}
+                >
+                  {category.node.category_name[0].text}
+                </span>
+              )
+            })}
+          </div>
         </div>
         <ProjectsGrid projects={projects} />
         {/* <ProjectsList projects={projects} /> */}

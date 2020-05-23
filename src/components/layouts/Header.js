@@ -35,12 +35,12 @@ const Header = (props) => {
             <Link
               to="/"
               sx={{
-                width: "180px",
+                width: ["100px", "120px", "180px"],
               }}
             >
               <img
                 sx={{
-                  width: "180px",
+                  width: ["100px", "120px", "180px"],
                 }}
                 alt="UI Logo"
                 src="/logo.svg"
