@@ -61,15 +61,6 @@ export const query = graphql`
                 }
               }
             }
-            body {
-              ... on PRISMIC_ProjectsBodyText {
-                type
-                label
-                primary {
-                  text
-                }
-              }
-            }
           }
         }
       }

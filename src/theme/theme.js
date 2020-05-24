@@ -5,6 +5,7 @@ export default {
     body: '"itc-avant-garde-gothic-pro",sans-serif',
     heading: "inherit",
     monospace: "Menlo, monospace",
+    paragraph: '"acumin-pro", sans-serif',
   },
   fontSizes: [12, 14, 16, 20, 24, 36, 48, 64, 72],
   fontWeights: {
@@ -54,7 +55,6 @@ export default {
       fontFamily: "body",
       lineHeight: "body",
       fontWeight: "body",
-      border: "10px solid #2526E5",
     },
     header: {
       width: "100%",

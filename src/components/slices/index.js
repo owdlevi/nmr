@@ -1,5 +1,6 @@
-import ImageCaption from './ImageCaption'
-import Quote from './Quote'
-import Text from './Text'
+import FullWidthImage from "./FullWidthImage"
+import Quote from "./Quote"
+import Text from "./Text"
+import ClientTestimonial from "./ClientTestimonial"
 
-export { ImageCaption, Quote, Text }
+export { FullWidthImage, Quote, ClientTestimonial, Text }

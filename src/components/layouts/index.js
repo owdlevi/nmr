@@ -33,15 +33,22 @@ const Layout = ({ children }) => {
         <title>{title}</title>
         <meta name="description" content={description} />
       </Helmet>
-      <Header />
-      <main
+      <div
         sx={{
-          variant: "styles.main",
+          border: "10px solid",
+          borderColor: "accent",
         }}
       >
-        {children}
-      </main>
-      <Footer />
+        <Header />
+        <main
+          sx={{
+            variant: "styles.main",
+          }}
+        >
+          {children}
+        </main>
+        <Footer />
+      </div>
     </ThemeProvider>
   )
 }
