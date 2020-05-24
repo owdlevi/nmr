@@ -228,7 +228,7 @@ export default (props) => {
               mb: "40px",
             }}
           >
-            {doc.node.intro.length ? RichText.asText(doc.node.intro) : ``}
+            {doc.node.intro ? RichText.asText(doc.node.intro) : ``}
           </p>
         </div>
         <div

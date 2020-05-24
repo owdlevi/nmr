@@ -75,10 +75,7 @@ export default ({ data }) => {
   const doc = data.prismic.allHomepages.edges.slice(0, 1).pop()
   const categorys = data.prismic.allCategorys.edges
 
-  console.log(filter)
-
   const updateFilter = (filter) => {
-    console.log(filter)
     setFilter(filter)
   }
   useEffect(() => {
