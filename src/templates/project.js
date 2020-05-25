@@ -5,7 +5,7 @@ import Img from 'gatsby-image'
 import get from 'lodash/get'
 import { RichText } from 'prismic-reactjs'
 import LayoutProject from '../components/layouts/LayoutProject'
-import { FullWidthImage, Quote, ClientTestimonial, Text } from '../components/slices'
+import { FullWidthImage, Quote, ClientTestimonial, Text, ShortVideo } from '../components/slices'
 
 // Query for the Blog Post content in Prismic
 export const query = graphql`
@@ -73,6 +73,23 @@ export const query = graphql`
                   }
                 }
               }
+              ... on PRISMIC_ProjectsBodyShort_video {
+                type
+                label
+                primary {
+                  video {
+                    _linkType
+                    ... on PRISMIC__FileLink {
+                      url
+                      size
+                      name
+                    }
+                    ... on PRISMIC__ExternalLink {
+                      url
+                    }
+                  }
+                }
+              }
               ... on PRISMIC_ProjectsBodyTestimonial {
                 type
                 label
@@ -83,6 +100,7 @@ export const query = graphql`
                 }
               }
             }
+
             headerimage
             headerimageSharp {
               childImageSharp {
@@ -128,6 +146,13 @@ const ProjectSlices = ({ slices }) => {
               {<FullWidthImage slice={slice} />}
             </div>
           )
+        case 'short_video':
+          return (
+            <div key={index} className="homepage-slice-wrapper">
+              {<ShortVideo slice={slice} />}
+            </div>
+          )
+
         default:
           return
       }
