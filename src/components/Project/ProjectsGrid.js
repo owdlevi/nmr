@@ -2,22 +2,19 @@
 import React, { useState, useEffect } from "react"
 import { jsx } from "theme-ui"
 import { useTransition, a } from "react-spring"
-import useMeasure from "../../utils/hooks/useMeasure"
-import useMedia from "../../utils/hooks/useMedia"
+import { useMedia, useMeasure } from "react-use"
 import { Link } from "gatsby"
 import { linkResolver } from "../../utils/linkResolver"
 import "./style.css"
 
 const ProjectsGrid = ({ projects }) => {
-  console.log(projects)
-  // Hook1: Tie media queries to the number of columns
-  const columns = useMedia(
-    ["(min-width: 1500px)", "(min-width: 1000px)", "(min-width: 600px)"],
-    [3, 3, 1],
-    2
-  )
+  const isWide = useMedia("(min-width: 600px)")
+
+  const columns = isWide ? 3 : 1
+
   // Hook2: Measure the width of the container element
-  const [bind, { width }] = useMeasure()
+  const [ref, { width }] = useMeasure()
+  console.log(width)
   // Hook3: Hold items
   const [items, setItems] = useState(projects)
   useEffect(() => {
@@ -63,7 +60,7 @@ const ProjectsGrid = ({ projects }) => {
   )
   // Render the grid
   return (
-    <div {...bind} className="list" style={{ height: Math.max(...heights) }}>
+    <div ref={ref} className="list" style={{ height: Math.max(...heights) }}>
       {transitions.map(({ item, props: { xy, ...rest }, key }) => (
         <a.div
           key={item.node._meta.id}

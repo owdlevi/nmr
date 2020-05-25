@@ -130,22 +130,22 @@ export default ({ data }) => {
                   y2="152.41"
                   fill="none"
                   stroke="#e6ebee"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <polyline
                   points="14.39 148.41 10.39 152.41 6.39 148.41"
                   fill="none"
                   stroke="#e6ebee"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <text
                   transform="rotate(-90 49.905 31.635)"
-                  font-size="21"
+                  fontSize="21"
                   fill="#e6ebee"
-                  font-family="ITCAvantGardePro-Bold, ITC Avant Garde Gothic Pro"
-                  font-weight="700"
+                  fontFamily="ITCAvantGardePro-Bold, ITC Avant Garde Gothic Pro"
+                  fontWeight="700"
                 >
                   SCROLL
                 </text>

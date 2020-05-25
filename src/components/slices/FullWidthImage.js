@@ -5,7 +5,6 @@ import get from "lodash/get"
 
 // Default Image
 const FullWidthImage = ({ slice }) => {
-  console.log(slice)
   const sharpImage = get(slice, "imageSharp.childImageSharp.fluid")
   const SliceImage = sharpImage ? (
     <Img fluid={sharpImage} />
