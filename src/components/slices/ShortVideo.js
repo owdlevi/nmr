@@ -7,7 +7,11 @@ const ShortVideo = ({ slice }) => {
   console.log(slice)
   return (
     <div key={slice.primary.video.size}>
-      <Waypoint key={slice.primary.video.size} bottomOffset="20%" onEnter={() => setPlaying(true)} />
+      <Waypoint
+        key={slice.primary.video.size}
+        onEnter={() => setPlaying(true)}
+        // onLeave={() => setPlaying(false)}
+      />
       <ReactPlayer playing={playing} url={slice.primary.video.url} loop={true} width="100%" height="auto" />
     </div>
   )
