@@ -1,4 +1,4 @@
-const { apiEndpoint } = require("./prismic-config")
+const { apiEndpoint } = require('./prismic-config')
 var repo = /([^\/]+)\.prismic\.io\/graphql/.exec(apiEndpoint)
 
 module.exports = {
@@ -14,7 +14,7 @@ module.exports = {
       resolve: `gatsby-plugin-web-font-loader`,
       options: {
         typekit: {
-          id: "mqg4evw",
+          id: 'mqg4evw',
         },
       },
     },
@@ -23,14 +23,14 @@ module.exports = {
       resolve: `gatsby-source-prismic-graphql`,
       options: {
         repositoryName: repo[1], // Loads the repo name from prismic configuration
-        path: "/preview",
+        path: '/preview',
         previews: true,
         pages: [
           {
-            type: "Projects",
-            match: "/projects/:uid",
-            path: "/projects-preview",
-            component: require.resolve("./src/templates/project.js"),
+            type: 'Projects',
+            match: '/projects/:uid',
+            path: '/projects-preview',
+            component: require.resolve('./src/templates/project.js'),
           },
         ],
       },

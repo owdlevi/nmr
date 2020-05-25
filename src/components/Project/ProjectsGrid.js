@@ -1,14 +1,14 @@
 /** @jsx jsx */
-import React, { useState, useEffect } from "react"
-import { jsx } from "theme-ui"
-import { useTransition, a } from "react-spring"
-import { useMedia, useMeasure } from "react-use"
-import { Link } from "gatsby"
-import { linkResolver } from "../../utils/linkResolver"
-import "./style.css"
+import { useState, useEffect } from 'react'
+import { jsx } from 'theme-ui'
+import { useTransition, a } from 'react-spring'
+import { useMedia, useMeasure } from 'react-use'
+
+import ProjectItem from './ProjectItem'
+import './style.css'
 
 const ProjectsGrid = ({ projects }) => {
-  const isWide = useMedia("(min-width: 600px)")
+  const isWide = useMedia('(min-width: 600px)')
 
   const columns = isWide ? 3 : 1
 
@@ -29,62 +29,39 @@ const ProjectsGrid = ({ projects }) => {
   let gridItems = items.map((child, i) => {
     const childHeight = 820 //child.node.listing_image.dimensions.height
     const column = heights.indexOf(Math.min(...heights)) // Basic masonry-grid placing, puts tile into the smallest column using Math.min
-    const xy = [
-      (width / columns) * column,
-      (heights[column] += childHeight / 2) - childHeight / 2,
-    ] // X = container width / number of columns * column index, Y = it's just the height of the current column
-    return { ...child, xy, width: width / columns, height: childHeight / 2 }
+    const xy = [(width / columns) * column, (heights[column] += width / columns) - width / columns] // X = container width / number of columns * column index, Y = it's just the height of the current column
+    return { ...child, xy, width: width / columns, height: width / columns }
   })
   // Hook5: Turn the static grid values into animated transitions, any addition, removal or change will be animated
-  const transitions = useTransition(
-    gridItems,
-    (item) => item.node.listing_image.url,
-    {
-      from: ({ xy, width, height }) => ({
-        xy,
-        width,
-        height,
-        opacity: 0,
-      }),
-      enter: ({ xy, width, height }) => ({
-        xy,
-        width,
-        height,
-        opacity: 1,
-      }),
-      update: ({ xy, width, height }) => ({ xy, width, height }),
-      leave: { height: 0, opacity: 0 },
-      config: { mass: 5, tension: 500, friction: 100 },
-      trail: 50,
-    }
-  )
+  const transitions = useTransition(gridItems, (item) => item.node.listing_image.url, {
+    from: ({ xy, width, height }) => ({
+      xy,
+      width,
+      height,
+      opacity: 0,
+    }),
+    enter: ({ xy, width, height }) => ({
+      xy,
+      width,
+      height,
+      opacity: 1,
+    }),
+    update: ({ xy, width, height }) => ({ xy, width, height }),
+    leave: { height: 0, opacity: 0 },
+    config: { mass: 5, tension: 500, friction: 100 },
+    trail: 50,
+  })
   // Render the grid
   return (
-    <div ref={ref} className="list" style={{ height: Math.max(...heights) }}>
+    <div name="projects" sx={{ cursor: 'pointer' }} ref={ref} className="list" style={{ height: Math.max(...heights) }}>
       {transitions.map(({ item, props: { xy, ...rest }, key }) => (
         <a.div
           key={item.node._meta.id}
           style={{
             transform: xy.interpolate((x, y) => `translate3d(${x}px,${y}px,0)`),
             ...rest,
-          }}
-        >
-          {/* <div>
-            <img src={item.url} alt="" />
-          </div> */}
-          <Link
-            sx={{
-              display: "inline-block",
-              position: "relative",
-              backgroundSize: "cover",
-              backgroundPosition: "center center",
-              width: "100%",
-              height: "100%",
-              overflow: "hidden",
-            }}
-            to={linkResolver(item.node._meta)}
-            style={{ backgroundImage: `url(${item.node.listing_image.url})` }}
-          ></Link>
+          }}>
+          <ProjectItem project={item.node} />
         </a.div>
       ))}
     </div>

@@ -1,13 +1,13 @@
 /** @jsx jsx */
-import { ThemeProvider, jsx } from "theme-ui"
-import { Helmet } from "react-helmet"
-import FooterWhite from "./FooterWhite"
-import HeaderWhite from "./HeaderWhite"
-import theme from "../../theme/theme"
+import { ThemeProvider, jsx } from 'theme-ui'
+import { Helmet } from 'react-helmet'
+import FooterWhite from './FooterWhite'
+import HeaderWhite from './HeaderWhite'
+import theme from '../../theme/theme'
 
 const LayoutProject = ({ children }) => {
   // Load the Prismic edit button
-  if (typeof window !== "undefined" && window.prismic) {
+  if (typeof window !== 'undefined' && window.prismic) {
     window.prismic.setupEditButton()
   }
 
@@ -18,15 +18,13 @@ const LayoutProject = ({ children }) => {
       </Helmet>
       <div
         sx={{
-          border: "10px solid #FFF",
-        }}
-      >
+          border: '10px solid #FFF',
+        }}>
         <HeaderWhite />
         <main
           sx={{
-            variant: "styles.main",
-          }}
-        >
+            variant: 'styles.main',
+          }}>
           {children}
         </main>
         <FooterWhite />
