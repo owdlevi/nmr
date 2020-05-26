@@ -1,15 +1,23 @@
 /** @jsx jsx */
 import { Container, jsx } from 'theme-ui'
 import { graphql, Link } from 'gatsby'
+import { linkResolver } from 'gatsby-source-prismic-graphql'
 import Img from 'gatsby-image'
 import get from 'lodash/get'
 import { RichText } from 'prismic-reactjs'
 import LayoutProject from '../components/layouts/LayoutProject'
-import { FullWidthImage, Quote, ClientTestimonial, Text, ShortVideo } from '../components/slices'
+import ProjectItem from '../components/Project/ProjectItem'
+import { FullWidthImage, Quote, ClientTestimonial, Text, ShortVideo, TwoColumnImage } from '../components/slices'
 
 // Query for the Blog Post content in Prismic
 export const query = graphql`
-  query BlogPostQuery($uid: String) {
+  query BlogPostQuery(
+    $uid: String
+    $paginationPreviousUid: String!
+    $paginationPreviousLang: String!
+    $paginationNextUid: String!
+    $paginationNextLang: String!
+  ) {
     prismic {
       allProjectss(uid: $uid) {
         edges {
@@ -55,6 +63,7 @@ export const query = graphql`
                 type
                 label
                 primary {
+                  comparison_component
                   left_image
                   left_imageSharp {
                     childImageSharp {
@@ -112,6 +121,38 @@ export const query = graphql`
           }
         }
       }
+      prevArticle: projects(uid: $paginationPreviousUid, lang: $paginationPreviousLang) {
+        title
+        _meta {
+          uid
+          lang
+          type
+        }
+        listing_image
+        listing_imageSharp {
+          childImageSharp {
+            fluid(maxWidth: 900, maxHeight: 900) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
+        }
+      }
+      nextArticle: projects(uid: $paginationNextUid, lang: $paginationNextLang) {
+        title
+        _meta {
+          uid
+          lang
+          type
+        }
+        listing_image
+        listing_imageSharp {
+          childImageSharp {
+            fluid(maxWidth: 900, maxHeight: 900) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
+        }
+      }
     }
   }
 `
@@ -152,6 +193,8 @@ const ProjectSlices = ({ slices }) => {
               {<ShortVideo slice={slice} />}
             </div>
           )
+        case 'two_column_image':
+          return <div key={index}>{<TwoColumnImage slice={slice} />}</div>
 
         default:
           return
@@ -171,11 +214,27 @@ const ProjectBody = ({ projectBody }) => {
   )
 }
 
+//Test Pagination
+
+const EnhancedPagination = ({ nextArticle, prevArticle }) => (
+  <div sx={{ backgroundColor: 'background', display: 'flex', flexFlow: 'row', justifyContent: 'space-between' }}>
+    {prevArticle ? <ProjectItem project={prevArticle} /> : ``}
+    {nextArticle ? <ProjectItem project={nextArticle} /> : ``}
+  </div>
+)
+
 export default (props) => {
   // Define the Post content returned from Prismic
   const doc = props.data.prismic.allProjectss.edges.slice(0, 1).pop()
 
   if (!doc) return null
+
+  const {
+    pageContext: { paginationPreviousMeta, paginationNextMeta },
+    data: {
+      prismic: { prevArticle, nextArticle },
+    },
+  } = props
 
   const sharpHeaderImage = get(doc.node, 'headerimageSharp.childImageSharp.fluid')
   const headerImage = sharpHeaderImage ? <Img fluid={sharpHeaderImage} /> : <img src={doc.node.headerimage.url} alt="" />
@@ -247,6 +306,7 @@ export default (props) => {
             backgroundColor: '#fff',
           }}>
           <ProjectBody projectBody={doc.node} />
+          <EnhancedPagination prevArticle={prevArticle} nextArticle={nextArticle} />
         </div>
       </Container>
     </LayoutProject>

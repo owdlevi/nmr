@@ -2,8 +2,10 @@
 import { useState } from 'react'
 import { jsx } from 'theme-ui'
 import { Link } from 'gatsby'
+import Img from 'gatsby-image'
 import { RichText } from 'prismic-reactjs'
 import { useSpring, animated, config } from 'react-spring'
+import get from 'lodash/get'
 import { Waypoint } from 'react-waypoint'
 import { linkResolver } from '../../utils/linkResolver'
 
@@ -16,6 +18,30 @@ const ProjectItem = ({ project }) => {
     opacity: iscardActive ? 1 : 0,
     config: config.slow,
   })
+
+  const sharpImage = get(project, 'listing_imageSharp.childImageSharp.fluid')
+  const ProjectImage = sharpImage ? (
+    <Img
+      fluid={sharpImage}
+      sx={{
+        width: '100%',
+        height: '100%',
+        display: 'inline-block',
+        objectFit: 'cover',
+      }}
+    />
+  ) : (
+    <img
+      sx={{
+        width: '100%',
+        height: '100%',
+        display: 'inline-block',
+        objectFit: 'cover',
+      }}
+      src={project.listing_image.url}
+      alt={project.listing_image.alt}
+    />
+  )
 
   return (
     <Link
@@ -30,18 +56,10 @@ const ProjectItem = ({ project }) => {
         height: '100%',
         overflow: 'hidden',
         position: 'relative',
+        lineHeight: 0,
       }}
       to={linkResolver(project._meta)}>
-      <img
-        sx={{
-          width: '100%',
-          height: '100%',
-          display: 'inline-block',
-          objectFit: 'cover',
-        }}
-        src={project.listing_image.url}
-        alt=""
-      />
+      {ProjectImage}
       <animated.div
         style={style}
         sx={{

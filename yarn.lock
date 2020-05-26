@@ -11395,6 +11395,11 @@ react-hot-loader@^4.12.21:
     shallowequal "^1.1.0"
     source-map "^0.7.3"
 
+react-image-comparison-slider@^1.8.4:
+  version "1.8.4"
+  resolved "https://registry.yarnpkg.com/react-image-comparison-slider/-/react-image-comparison-slider-1.8.4.tgz#c918db00253ac9dc607390f23ad98a8f7b4667f8"
+  integrity sha512-NdkQYt/AVMkeOhekLVaLy0mVW2438tDc8DzN40nhsvdz4s29vUnNwjjdEtF0UnDuMWenPVctNa3O0PR/FPXcoQ==
+
 react-is@^16.12.0, react-is@^16.6.3, react-is@^16.7.0, react-is@^16.8.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"

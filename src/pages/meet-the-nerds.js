@@ -2,10 +2,20 @@
 import { jsx, Container } from 'theme-ui'
 import Layout from '../components/layouts'
 import OurStory from '../components/SVG/ourStory'
+import { Helmet } from 'react-helmet'
+
+const title = `Meet the nerds | No More Rules`
+const description = `Meet the nerds description `
 
 const MeetTheNerds = () => {
   return (
     <Layout>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>{title}</title>
+        <meta name="description" content={description} />
+      </Helmet>
+
       <Container
         sx={{
           p: 4,

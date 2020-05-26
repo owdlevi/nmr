@@ -28,7 +28,7 @@ const Hero = ({ home }) => {
         {RichText.asText(home.hero_title)}
       </h1>
       <Link
-        to="/our-story"
+        to="/meet-the-nerds"
         sx={{
           display: 'flex',
           justifyContent: 'flex-start',
