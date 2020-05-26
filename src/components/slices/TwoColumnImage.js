@@ -53,8 +53,10 @@ const TwoColumnImage = ({ slice }) => {
     <div>
       {slice.primary.comparison_component === true ? (
         <ImageComparasion imageLeft={SliceImageLeft} imageRight={SliceImageRight} />
-      ) : (
+      ) : typeof document !== 'undefined' ? (
         <TwoImages imageLeft={SliceImageLeft} imageRight={SliceImageRight} />
+      ) : (
+        ''
       )}
     </div>
   )

@@ -4229,6 +4229,11 @@ css-declaration-sorter@^4.0.1:
     postcss "^7.0.1"
     timsort "^0.3.0"
 
+css-element-queries@^1.0.2:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/css-element-queries/-/css-element-queries-1.2.3.tgz#e14940b1fcd4bf0da60ea4145d05742d7172e516"
+  integrity sha512-QK9uovYmKTsV2GXWQiMOByVNrLn2qz6m3P7vWpOR4IdD6I3iXoDw5qtgJEN3Xq7gIbdHVKvzHjdAtcl+4Arc4Q==
+
 css-in-js-utils@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/css-in-js-utils/-/css-in-js-utils-2.0.1.tgz#3b472b398787291b47cfe3e44fecfdd9e914ba99"
@@ -11321,6 +11326,14 @@ rc@^1.2.7, rc@^1.2.8:
     ini "~1.3.0"
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
+
+react-compare-image@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/react-compare-image/-/react-compare-image-2.0.4.tgz#d1c6d64cc61852404df538792fb1ee138de38919"
+  integrity sha512-kuYtu+qOF07XhY0/cJCqXgM26yqXRKtqZS9YLNi18Cd9tE27sqDe/LZCxoMTDiPA3gfq8uM82Q56nzkZMWBJhg==
+  dependencies:
+    css-element-queries "^1.0.2"
+    prop-types "^15.7.2"
 
 react-dev-utils@^4.2.3:
   version "4.2.3"
