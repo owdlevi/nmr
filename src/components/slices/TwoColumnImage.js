@@ -1,4 +1,5 @@
 /** @jsx jsx */
+import { Fragment } from 'react'
 import { jsx } from 'theme-ui'
 import Img from 'gatsby-image'
 import get from 'lodash/get'
@@ -50,7 +51,7 @@ const TwoColumnImage = ({ slice }) => {
   }
   console.log(slice)
   return (
-    <div>
+    <Fragment>
       {slice.primary.comparison_component === true ? (
         <ImageComparasion imageLeft={SliceImageLeft} imageRight={SliceImageRight} />
       ) : typeof document !== 'undefined' ? (
@@ -58,7 +59,7 @@ const TwoColumnImage = ({ slice }) => {
       ) : (
         ''
       )}
-    </div>
+    </Fragment>
   )
 }
 

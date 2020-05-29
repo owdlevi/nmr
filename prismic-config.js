@@ -1,4 +1,4 @@
 module.exports = {
   // -- Prismic repository GraphQL endpoint
-  apiEndpoint: "https://nomorerules.prismic.io/graphql",
+  apiEndpoint: 'https://nomorerulesweb.prismic.io/graphql',
 }

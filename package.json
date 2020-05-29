@@ -38,14 +38,12 @@
   "devDependencies": {
     "prettier": "^2.0.4"
   },
-  "keywords": [
-    "gatsby"
-  ],
+  "keywords": ["gatsby"],
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
     "format": "prettier --write src/**/*.{js,jsx}",
-    "start": "gatsby develop",
+    "start": "gatsby develop -p 8001",
     "serve": "gatsby serve",
     "now-build": "gatsby build"
   },

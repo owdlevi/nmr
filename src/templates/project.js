@@ -265,7 +265,7 @@ export default (props) => {
       <Container
         sx={{
           backgroundColor: 'transparent',
-          px: 4,
+
           zIndex: 10,
         }}>
         <div
@@ -300,8 +300,8 @@ export default (props) => {
         </div>
         <div
           sx={{
-            width: '90%',
-            maxWidth: '1200px',
+            width: '100%',
+            // maxWidth: '1200px',
             mx: 'auto',
             backgroundColor: '#fff',
           }}>
